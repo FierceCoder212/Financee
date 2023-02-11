@@ -1,0 +1,406 @@
+<form id="calcul">
+  <% if (typeof user == 'object' && user) { %>
+  <input type="hidden" id="userid" value="<%= user.id %>" />
+  <%}%>
+  <div class="tab-content" style="margin-top: 20px" id="myTabContent">
+    <div
+      class="tab-pane fade show active"
+      id="income-tab"
+      role="tabpanel"
+      aria-labelledby="income-tab"
+    >
+      <p class="info-head">USER INCOME</p>
+      <div class="table-div user-income">
+        <button type="button" class="btn btn-sm custom-button add">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <button type="button" class="btn btn-sm custom-button remove">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <table class="table table-striped" style="margin: 0">
+          <thead>
+            <tr>
+              <th scope="col" style="color: transparent">Row</th>
+              <th scope="col">Income Source</th>
+              <th scope="col">Category</th>
+              <th scope="col">Pay Period</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Yearly Income</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <th scope="col" colspan="5" style="text-align: center">
+                YEARLY TOTAL
+              </th>
+              <td>
+                <label>$</label>
+                <input type="text" name="" value="0.00" readonly />
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <canvas id="income" style="width: 100%; max-width: 600px"></canvas>
+    </div>
+    <div
+      class="tab-pane fade"
+      id="expense-tab"
+      role="tabpanel"
+      aria-labelledby="expenses-tab"
+    >
+      <p class="info-head">HOME</p>
+      <div class="table-div expense home">
+        <button type="button" class="btn btn-sm custom-button add">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <button type="button" class="btn btn-sm custom-button remove">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <table class="table table-striped" style="margin: 0">
+          <thead>
+            <tr>
+              <th scope="col" style="color: transparent">Row</th>
+              <th scope="col">Fixed Expenses</th>
+              <th scope="col">Notes</th>
+              <th scope="col">Cost Details</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Frequency</th>
+              <th scope="col">Account</th>
+              <th scope="col">Yearly Expense</th>
+              <th scope="col">Percent Expense</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <th scope="col" colspan="7" style="text-align: center">
+                YEARLY TOTAL
+              </th>
+              <td>$0.00</td>
+              <td>%0.00</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <p class="info-head">UTILITIES</p>
+      <div class="table-div expense utilities">
+        <button type="button" class="btn btn-sm custom-button add">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <button type="button" class="btn btn-sm custom-button remove">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <table class="table table-striped" style="margin: 0">
+          <thead>
+            <tr>
+              <th scope="col" style="color: transparent">Row</th>
+              <th scope="col">Fixed Expenses</th>
+              <th scope="col">Notes</th>
+              <th scope="col">Cost Details</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Frequency</th>
+              <th scope="col">Account</th>
+              <th scope="col">Yearly Expense</th>
+              <th scope="col">Percent Expense</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <th scope="col" colspan="7" style="text-align: center">
+                YEARLY TOTAL
+              </th>
+              <td>$0.00</td>
+              <td>%0.00</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <p class="info-head">TRANSPORTATION</p>
+      <div class="table-div expense transport">
+        <button type="button" class="btn btn-sm custom-button add">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <button type="button" class="btn btn-sm custom-button remove">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <table class="table table-striped" style="margin: 0">
+          <thead>
+            <tr>
+              <th scope="col" style="color: transparent">Row</th>
+              <th scope="col">Fixed Expenses</th>
+              <th scope="col">Notes</th>
+              <th scope="col">Cost Details</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Frequency</th>
+              <th scope="col">Account</th>
+              <th scope="col">Yearly Expense</th>
+              <th scope="col">Percent Expense</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <th scope="col" colspan="7" style="text-align: center">
+                YEARLY TOTAL
+              </th>
+              <td>$0.00</td>
+              <td>%0.00</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <p class="info-head">HEALTH AND WELL-BEING</p>
+      <div class="table-div expense health">
+        <button type="button" class="btn btn-sm custom-button add">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <button type="button" class="btn btn-sm custom-button remove">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <table class="table table-striped" style="margin: 0">
+          <thead>
+            <tr>
+              <th scope="col" style="color: transparent">Row</th>
+              <th scope="col">Fixed Expenses</th>
+              <th scope="col">Notes</th>
+              <th scope="col">Cost Details</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Frequency</th>
+              <th scope="col">Account</th>
+              <th scope="col">Yearly Expense</th>
+              <th scope="col">Percent Expense</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <th scope="col" colspan="7" style="text-align: center">
+                YEARLY TOTAL
+              </th>
+              <td>$0.00</td>
+              <td>%0.00</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <p class="info-head">KIDS</p>
+      <div class="table-div expense kids">
+        <button type="button" class="btn btn-sm custom-button add">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <button type="button" class="btn btn-sm custom-button remove">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <table class="table table-striped" style="margin: 0">
+          <thead>
+            <tr>
+              <th scope="col" style="color: transparent">Row</th>
+              <th scope="col">Fixed Expenses</th>
+              <th scope="col">Notes</th>
+              <th scope="col">Cost Details</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Frequency</th>
+              <th scope="col">Account</th>
+              <th scope="col">Yearly Expense</th>
+              <th scope="col">Percent Expense</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <th scope="col" colspan="7" style="text-align: center">
+                YEARLY TOTAL
+              </th>
+              <td>$0.00</td>
+              <td>%0.00</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <p class="info-head">MISCELLANEOUS</p>
+      <div class="table-div expense miscellaneous">
+        <button type="button" class="btn btn-sm custom-button add">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <button type="button" class="btn btn-sm custom-button remove">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <table class="table table-striped" style="margin: 0">
+          <thead>
+            <tr>
+              <th scope="col" style="color: transparent">Row</th>
+              <th scope="col">Fixed Expenses</th>
+              <th scope="col">Notes</th>
+              <th scope="col">Cost Details</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Frequency</th>
+              <th scope="col">Account</th>
+              <th scope="col">Yearly Expense</th>
+              <th scope="col">Percent Expense</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <th scope="col" colspan="7" style="text-align: center">
+                YEARLY TOTAL
+              </th>
+              <td>$0.00</td>
+              <td>%0.00</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <p class="info-head">
+        <input type="text" name="auto1" value="-" />
+      </p>
+      <div class="table-div expense auto1">
+        <button type="button" class="btn btn-sm custom-button add">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <button type="button" class="btn btn-sm custom-button remove">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <table class="table table-striped" style="margin: 0">
+          <thead>
+            <tr>
+              <th scope="col" style="color: transparent">Row</th>
+              <th scope="col">Fixed Expenses</th>
+              <th scope="col">Notes</th>
+              <th scope="col">Cost Details</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Frequency</th>
+              <th scope="col">Account</th>
+              <th scope="col">Yearly Expense</th>
+              <th scope="col">Percent Expense</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <th scope="col" colspan="7" style="text-align: center">
+                YEARLY TOTAL
+              </th>
+              <td>$0.00</td>
+              <td>%0.00</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <p class="info-head">
+        <input type="text" name="auto2" value="-" />
+      </p>
+      <div class="table-div expense auto2">
+        <button type="button" class="btn btn-sm custom-button add">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <button type="button" class="btn btn-sm custom-button remove">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <table class="table table-striped" style="margin: 0">
+          <thead>
+            <tr>
+              <th scope="col" style="color: transparent">Row</th>
+              <th scope="col">Fixed Expenses</th>
+              <th scope="col">Notes</th>
+              <th scope="col">Cost Details</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Frequency</th>
+              <th scope="col">Account</th>
+              <th scope="col">Yearly Expense</th>
+              <th scope="col">Percent Expense</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <th scope="col" colspan="7" style="text-align: center">
+                YEARLY TOTAL
+              </th>
+              <td>$0.00</td>
+              <td>%0.00</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <p class="info-head">TOTAL YEARLY EXPENSE</p>
+      <div class="table-div">
+        <table class="table table-striped total" style="margin: 20px 0 0 0">
+          <thead>
+            <tr>
+              <th scope="col" style="color: transparent">Row</th>
+              <th scope="col" style="color: transparent">Fixed Expenses</th>
+              <th scope="col" style="color: transparent">Notes</th>
+              <th scope="col" style="color: transparent">Cost Details</th>
+              <th scope="col" style="color: transparent">Amount</th>
+              <th scope="col" style="color: transparent">Frequency</th>
+              <th scope="col" style="color: transparent">Account</th>
+              <th scope="col">Yearly Expense</th>
+              <th scope="col">Percent Expense</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <th scope="col" colspan="7" style="text-align: center">
+                TOTAL EXPENSE
+              </th>
+              <td>$0.00</td>
+              <td>%0.00</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div>
+        <canvas
+          id="expense"
+          style="width: 100%; max-width: 600px; display: block"
+        ></canvas>
+      </div>
+    </div>
+    <div
+      class="tab-pane fade"
+      id="transfers-tab"
+      role="tabpanel"
+      aria-labelledby="transfer-tab"
+    >
+      <p class="info-head">BANKS INFORMATION</p>
+      <div class="table-div transer">
+        <button type="button" class="btn btn-sm custom-button add">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <button type="button" class="btn btn-sm custom-button remove">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <table class="table table-striped" style="margin: 0">
+          <thead>
+            <tr>
+              <th scope="col" style="color: transparent">Row</th>
+              <th scope="col">BANK</th>
+              <th scope="col">NOTE</th>
+              <th scope="col">TIME PERIOD</th>
+              <th scope="col">FREQUENCY AMOUNT</th>
+              <th scope="col">YEARLY AMOUNT</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <th scope="col" colspan="4" style="text-align: center">
+                YEARLY TOTAL
+              </th>
+              <td>$0.00</td>
+              <td>$0.00</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="">
+        <canvas id="transfers" style="width: 100%; max-width: 600px"></canvas>
+      </div>
+    </div>
+  </div>
+</form>

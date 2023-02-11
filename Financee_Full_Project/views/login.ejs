@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400;500;600;700;800;900&family=Staatliches&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/86a1a962fc.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="CSS/signup.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="login-box">
+        <h2>Login</h2>
+        <form>
+          <div class="email error"></div>
+          <div class="user-box">
+            <input type="text" name="email" required="true" />
+            <label>Email</label>
+          </div>
+          <div class="password error"></div>
+          <div class="user-box">
+            <input type="password" name="password" required="true" />
+            <label>Password</label>
+          </div>
+          <a href="signup">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Create Account?
+          </a>
+          <button>Submit</button>
+        </form>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const form = document.querySelector("form");
+    const emailError = document.querySelector(".email.error");
+    const passwordError = document.querySelector(".password.error");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // reset errors
+      emailError.textContent = "";
+      passwordError.textContent = "";
+
+      // get values
+      const email = form.email.value;
+      const password = form.password.value;
+
+      try {
+        const res = await fetch("/login", {
+          method: "POST",
+          body: JSON.stringify({ email, password }),
+          headers: { "Content-Type": "application/json" },
+        });
+        const data = await res.json();
+        console.log(data);
+        if (data.errors) {
+          emailError.textContent = data.errors.email;
+          passwordError.textContent = data.errors.password;
+        }
+        if (data.user) {
+          location.assign("/");
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  </script>
+</html>
